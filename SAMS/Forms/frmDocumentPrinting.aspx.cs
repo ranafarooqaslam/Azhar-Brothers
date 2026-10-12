@@ -202,6 +202,7 @@ public partial class Forms_frmDocumentPrinting : System.Web.UI.Page
                 CrpReport.SetParameterValue("COMPANY_NAME", "");
             }
             CrpReport.SetParameterValue("RollbackLabel", "");
+            CrpReport.SetParameterValue("PrintedBy", Session["UserName2"].ToString());
             Session.Add("CrpReport", CrpReport);
             Session.Add("ReportType", p_ReportType);
             string url = "'Default.aspx'";
