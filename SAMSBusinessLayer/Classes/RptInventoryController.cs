@@ -499,6 +499,43 @@ namespace SAMSBusinessLayer.Classes
             }
         }
 
+        public DataSet GetExpiryDamageData(int p_Distributor_ID, int p_Principal_Id, DateTime p_FromDate, DateTime p_To_Date, int p_TypeId)
+        {
+            IDbConnection mConnection = null;
+            try
+            {
+                mConnection = ProviderFactory.GetConnection(Configuration.ConnectionString, EnumProviders.SQLClient);
+                mConnection.Open();
+                uspGetExpiryDamageData ObjPrint = new uspGetExpiryDamageData();
+                SAMSBusinessLayer.Reports.dsSalesPurchaseRegister ds = new SAMSBusinessLayer.Reports.dsSalesPurchaseRegister();
+                ObjPrint.Connection = mConnection;
+                ObjPrint.DISTRIBUTOR_ID = p_Distributor_ID;
+                ObjPrint.TYPEID = p_TypeId;
+                ObjPrint.PRINCIPAL_ID = p_Principal_Id;
+                ObjPrint.FROM_DATE = p_FromDate;
+                ObjPrint.TO_DATE = p_To_Date;
+                DataTable dt = ObjPrint.ExecuteTable();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ds.Tables["dtExpiryDamage"].ImportRow(dr);
+                }
+
+                return ds;
+            }
+            catch (Exception exp)
+            {
+                ExceptionPublisher.PublishException(exp);
+                return null;
+            }
+            finally
+            {
+                if (mConnection != null && mConnection.State == ConnectionState.Open)
+                {
+                    mConnection.Close();
+                }
+            }
+        }
+
         #endregion
 
         #endregion

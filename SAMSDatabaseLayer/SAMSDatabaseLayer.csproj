@@ -967,6 +967,7 @@
     <Compile Include="ReportClasses\GetExipryDate.cs" />
     <Compile Include="ReportClasses\RptSkuWiseCustomerSale.cs" />
     <Compile Include="ReportClasses\spSelectVoucherVendor.cs" />
+    <Compile Include="ReportClasses\uspGetExpiryDamageData.cs" />
     <Compile Include="ReportClasses\uspDamageExpirySales.cs" />
     <Compile Include="ReportClasses\UspDocumentPrintingRollBack.cs" />
     <Compile Include="ReportClasses\uspGetCategoryWisePurchase.cs" />

@@ -128,7 +128,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="uspGetSalesFormat" msprop:Generator_TableClassName="uspGetSalesFormatDataTable" msprop:Generator_RowEvArgName="uspGetSalesFormatRowChangeEvent" msprop:Generator_TableVarName="tableuspGetSalesFormat" msprop:Generator_TablePropName="uspGetSalesFormat" msprop:Generator_RowDeletingName="uspGetSalesFormatRowDeleting" msprop:Generator_RowChangingName="uspGetSalesFormatRowChanging" msprop:Generator_RowDeletedName="uspGetSalesFormatRowDeleted" msprop:Generator_RowEvHandlerName="uspGetSalesFormatRowChangeEventHandler" msprop:Generator_RowChangedName="uspGetSalesFormatRowChanged" msprop:Generator_UserTableName="uspGetSalesFormat" msprop:Generator_RowClassName="uspGetSalesFormatRow">
+        <xs:element name="uspGetSalesFormat" msprop:Generator_TableClassName="uspGetSalesFormatDataTable" msprop:Generator_RowEvArgName="uspGetSalesFormatRowChangeEvent" msprop:Generator_TableVarName="tableuspGetSalesFormat" msprop:Generator_TablePropName="uspGetSalesFormat" msprop:Generator_RowDeletingName="uspGetSalesFormatRowDeleting" msprop:Generator_RowChangingName="uspGetSalesFormatRowChanging" msprop:Generator_RowDeletedName="uspGetSalesFormatRowDeleted" msprop:Generator_RowEvHandlerName="uspGetSalesFormatRowChangeEventHandler" msprop:Generator_UserTableName="uspGetSalesFormat" msprop:Generator_RowChangedName="uspGetSalesFormatRowChanged" msprop:Generator_RowClassName="uspGetSalesFormatRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Buyer_x0020_NTN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBuyer_NTN" msprop:Generator_ColumnPropNameInRow="Buyer_NTN" msprop:Generator_ColumnPropNameInTable="Buyer_NTNColumn" msprop:Generator_UserColumnName="Buyer NTN" minOccurs="0">
@@ -198,7 +198,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="uspGetPurchaseFormat" msprop:Generator_TableClassName="uspGetPurchaseFormatDataTable" msprop:Generator_RowEvArgName="uspGetPurchaseFormatRowChangeEvent" msprop:Generator_TableVarName="tableuspGetPurchaseFormat" msprop:Generator_TablePropName="uspGetPurchaseFormat" msprop:Generator_RowDeletingName="uspGetPurchaseFormatRowDeleting" msprop:Generator_RowChangingName="uspGetPurchaseFormatRowChanging" msprop:Generator_RowDeletedName="uspGetPurchaseFormatRowDeleted" msprop:Generator_RowEvHandlerName="uspGetPurchaseFormatRowChangeEventHandler" msprop:Generator_RowChangedName="uspGetPurchaseFormatRowChanged" msprop:Generator_UserTableName="uspGetPurchaseFormat" msprop:Generator_RowClassName="uspGetPurchaseFormatRow">
+        <xs:element name="uspGetPurchaseFormat" msprop:Generator_TableClassName="uspGetPurchaseFormatDataTable" msprop:Generator_RowEvArgName="uspGetPurchaseFormatRowChangeEvent" msprop:Generator_TableVarName="tableuspGetPurchaseFormat" msprop:Generator_TablePropName="uspGetPurchaseFormat" msprop:Generator_RowDeletingName="uspGetPurchaseFormatRowDeleting" msprop:Generator_RowChangingName="uspGetPurchaseFormatRowChanging" msprop:Generator_RowDeletedName="uspGetPurchaseFormatRowDeleted" msprop:Generator_RowEvHandlerName="uspGetPurchaseFormatRowChangeEventHandler" msprop:Generator_UserTableName="uspGetPurchaseFormat" msprop:Generator_RowChangedName="uspGetPurchaseFormatRowChanged" msprop:Generator_RowClassName="uspGetPurchaseFormatRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Supplier_x0020_NTN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSupplier_NTN" msprop:Generator_ColumnPropNameInRow="Supplier_NTN" msprop:Generator_ColumnPropNameInTable="Supplier_NTNColumn" msprop:Generator_UserColumnName="Supplier NTN" minOccurs="0">
@@ -623,6 +623,30 @@
               <xs:element name="SALE_QTY" msprop:Generator_ColumnVarNameInTable="columnSALE_QTY" msprop:Generator_ColumnPropNameInRow="SALE_QTY" msprop:Generator_ColumnPropNameInTable="SALE_QTYColumn" msprop:Generator_UserColumnName="SALE_QTY" type="xs:int" minOccurs="0" />
               <xs:element name="DISTRIBUTOR_PRICE" msprop:Generator_ColumnVarNameInTable="columnDISTRIBUTOR_PRICE" msprop:Generator_ColumnPropNameInRow="DISTRIBUTOR_PRICE" msprop:Generator_ColumnPropNameInTable="DISTRIBUTOR_PRICEColumn" msprop:Generator_UserColumnName="DISTRIBUTOR_PRICE" type="xs:decimal" minOccurs="0" />
               <xs:element name="TRADE_PRICE" msprop:Generator_ColumnVarNameInTable="columnTRADE_PRICE" msprop:Generator_ColumnPropNameInRow="TRADE_PRICE" msprop:Generator_ColumnPropNameInTable="TRADE_PRICEColumn" msprop:Generator_UserColumnName="TRADE_PRICE" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtExpiryDamage" msprop:Generator_TableClassName="dtExpiryDamageDataTable" msprop:Generator_TableVarName="tabledtExpiryDamage" msprop:Generator_RowChangedName="dtExpiryDamageRowChanged" msprop:Generator_TablePropName="dtExpiryDamage" msprop:Generator_RowDeletingName="dtExpiryDamageRowDeleting" msprop:Generator_RowChangingName="dtExpiryDamageRowChanging" msprop:Generator_RowEvHandlerName="dtExpiryDamageRowChangeEventHandler" msprop:Generator_RowDeletedName="dtExpiryDamageRowDeleted" msprop:Generator_RowClassName="dtExpiryDamageRow" msprop:Generator_UserTableName="dtExpiryDamage" msprop:Generator_RowEvArgName="dtExpiryDamageRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ItemName" msprop:Generator_ColumnVarNameInTable="columnItemName" msprop:Generator_ColumnPropNameInRow="ItemName" msprop:Generator_ColumnPropNameInTable="ItemNameColumn" msprop:Generator_UserColumnName="ItemName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ExpiryQty" msprop:Generator_ColumnVarNameInTable="columnExpiryQty" msprop:Generator_ColumnPropNameInRow="ExpiryQty" msprop:Generator_ColumnPropNameInTable="ExpiryQtyColumn" msprop:Generator_UserColumnName="ExpiryQty" type="xs:int" minOccurs="0" />
+              <xs:element name="DamageQty" msprop:Generator_ColumnVarNameInTable="columnDamageQty" msprop:Generator_ColumnPropNameInRow="DamageQty" msprop:Generator_ColumnPropNameInTable="DamageQtyColumn" msprop:Generator_UserColumnName="DamageQty" type="xs:int" minOccurs="0" />
+              <xs:element name="FP" msprop:Generator_ColumnVarNameInTable="columnFP" msprop:Generator_ColumnPropNameInRow="FP" msprop:Generator_ColumnPropNameInTable="FPColumn" msprop:Generator_UserColumnName="FP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CustomerName" msprop:Generator_ColumnVarNameInTable="columnCustomerName" msprop:Generator_ColumnPropNameInRow="CustomerName" msprop:Generator_ColumnPropNameInTable="CustomerNameColumn" msprop:Generator_UserColumnName="CustomerName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CUSTOMER_ID" msprop:Generator_ColumnVarNameInTable="columnCUSTOMER_ID" msprop:Generator_ColumnPropNameInRow="CUSTOMER_ID" msprop:Generator_ColumnPropNameInTable="CUSTOMER_IDColumn" msprop:Generator_UserColumnName="CUSTOMER_ID" type="xs:long" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
