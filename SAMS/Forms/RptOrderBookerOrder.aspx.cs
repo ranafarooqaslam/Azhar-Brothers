@@ -250,12 +250,10 @@ public partial class Forms_RptOrderBookerOrder : System.Web.UI.Page
                         cell.Value = DataTableRow[DataTableColumn.ColumnName];
                         cell.Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
                     }
-                    else if (DataTableColumn.ColumnName == "QUANTITY_UNIT")
-                    {
-                        var cell = ws.Cells[rowIndex, 7];
-                        cell.Value = Convert.ToDecimal(DataTableRow["QUANTITY_UNIT"]) - Convert.ToDecimal(DataTableRow["AMOUNT"]);
-                        cell.Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-                    }
+                    var cell7 = ws.Cells[rowIndex, 7];
+                    cell7.Value = Convert.ToDecimal(DataTableRow["QUANTITY_UNIT"]) - Convert.ToDecimal(DataTableRow["AMOUNT"]);
+                    cell7.Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+
                     try
                     {
                         GrossAmount = Convert.ToDecimal(DataTableRow["QUANTITY_UNIT"]);
