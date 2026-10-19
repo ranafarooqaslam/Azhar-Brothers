@@ -6475,10 +6475,6 @@ namespace SAMSBusinessLayer.Reports {
             
             private global::System.Data.DataColumn columnFP;
             
-            private global::System.Data.DataColumn columnCustomerName;
-            
-            private global::System.Data.DataColumn columnCUSTOMER_ID;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtExpiryDamageDataTable() {
@@ -6546,22 +6542,6 @@ namespace SAMSBusinessLayer.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CustomerNameColumn {
-                get {
-                    return this.columnCustomerName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CUSTOMER_IDColumn {
-                get {
-                    return this.columnCUSTOMER_ID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6597,15 +6577,13 @@ namespace SAMSBusinessLayer.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public dtExpiryDamageRow AdddtExpiryDamageRow(string ItemName, int ExpiryQty, int DamageQty, decimal FP, string CustomerName, long CUSTOMER_ID) {
+            public dtExpiryDamageRow AdddtExpiryDamageRow(string ItemName, int ExpiryQty, int DamageQty, decimal FP) {
                 dtExpiryDamageRow rowdtExpiryDamageRow = ((dtExpiryDamageRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ItemName,
                         ExpiryQty,
                         DamageQty,
-                        FP,
-                        CustomerName,
-                        CUSTOMER_ID};
+                        FP};
                 rowdtExpiryDamageRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtExpiryDamageRow);
                 return rowdtExpiryDamageRow;
@@ -6638,8 +6616,6 @@ namespace SAMSBusinessLayer.Reports {
                 this.columnExpiryQty = base.Columns["ExpiryQty"];
                 this.columnDamageQty = base.Columns["DamageQty"];
                 this.columnFP = base.Columns["FP"];
-                this.columnCustomerName = base.Columns["CustomerName"];
-                this.columnCUSTOMER_ID = base.Columns["CUSTOMER_ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6653,12 +6629,7 @@ namespace SAMSBusinessLayer.Reports {
                 base.Columns.Add(this.columnDamageQty);
                 this.columnFP = new global::System.Data.DataColumn("FP", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFP);
-                this.columnCustomerName = new global::System.Data.DataColumn("CustomerName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCustomerName);
-                this.columnCUSTOMER_ID = new global::System.Data.DataColumn("CUSTOMER_ID", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCUSTOMER_ID);
                 this.columnItemName.MaxLength = 200;
-                this.columnCustomerName.MaxLength = 150;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11016,38 +10987,6 @@ namespace SAMSBusinessLayer.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CustomerName {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtExpiryDamage.CustomerNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CustomerName\' in table \'dtExpiryDamage\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtExpiryDamage.CustomerNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long CUSTOMER_ID {
-                get {
-                    try {
-                        return ((long)(this[this.tabledtExpiryDamage.CUSTOMER_IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CUSTOMER_ID\' in table \'dtExpiryDamage\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtExpiryDamage.CUSTOMER_IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsItemNameNull() {
                 return this.IsNull(this.tabledtExpiryDamage.ItemNameColumn);
             }
@@ -11092,30 +11031,6 @@ namespace SAMSBusinessLayer.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetFPNull() {
                 this[this.tabledtExpiryDamage.FPColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCustomerNameNull() {
-                return this.IsNull(this.tabledtExpiryDamage.CustomerNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCustomerNameNull() {
-                this[this.tabledtExpiryDamage.CustomerNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCUSTOMER_IDNull() {
-                return this.IsNull(this.tabledtExpiryDamage.CUSTOMER_IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCUSTOMER_IDNull() {
-                this[this.tabledtExpiryDamage.CUSTOMER_IDColumn] = global::System.Convert.DBNull;
             }
         }
         

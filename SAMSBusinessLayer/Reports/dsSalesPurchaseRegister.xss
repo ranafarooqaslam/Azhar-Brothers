@@ -20,7 +20,7 @@
     <Shape ID="DesignTable:uspGetDMReturnStatement" ZOrder="5" X="511" Y="127" Height="257" Width="227" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="86" />
     <Shape ID="DesignTable:RptSkuWiseCustomerSale" ZOrder="4" X="137" Y="401" Height="219" Width="215" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="215" />
     <Shape ID="DesignTable:uspRptSaleProfit" ZOrder="3" X="941" Y="221" Height="143" Width="164" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="139" />
-    <Shape ID="DesignTable:dtExpiryDamage" ZOrder="1" X="1191" Y="277" Height="171" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="167" />
+    <Shape ID="DesignTable:dtExpiryDamage" ZOrder="1" X="1191" Y="277" Height="125" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
