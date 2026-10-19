@@ -5,6 +5,9 @@ using System.Web.UI.WebControls;
 using SAMSBusinessLayer.Classes;
 using SAMSCommon.Classes;
 using SAMSBusinessLayer.Reports;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using System.Web;
 
 /// <summary>
 /// Form For Order Booker Reports
@@ -116,7 +119,20 @@ public partial class Forms_RptOrderBookerOrder : System.Web.UI.Page
     /// <param name="e">EventArgs</param>
     protected void btnViewExcel_Click(object sender, EventArgs e)
     {
-        PrintReport(1); 
+        OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+        using (ExcelPackage p = new ExcelPackage())
+        {
+            ExcelWorksheet ws = p.Workbook.Worksheets.Add("OBOrderTakingReport");            
+            Byte[] fileBytes = p.GetAsByteArray();
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=OBOrderTakingReport.xlsx");
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.ms-excel";
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.BinaryWrite(fileBytes);
+            Response.End();
+        }
     }
 
     /// <summary>
