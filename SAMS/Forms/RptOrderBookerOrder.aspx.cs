@@ -220,10 +220,10 @@ public partial class Forms_RptOrderBookerOrder : System.Web.UI.Page
                     cell0.Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
                     cell0.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                    if (DataTableColumn.ColumnName == "CUSTOMER_CODE")
+                    if (DataTableColumn.ColumnName == "CUSTOMER_NAME")
                     {
                         var cell = ws.Cells[rowIndex, 2];
-                        cell.Value = DataTableRow[DataTableColumn.ColumnName] + "-" + DataTableRow["CUSTOMER_NAME"];
+                        cell.Value = DataTableRow[DataTableColumn.ColumnName];
                         cell.Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
                     }
                     else if (DataTableColumn.ColumnName == "sku_name")
