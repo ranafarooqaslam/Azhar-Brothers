@@ -18,20 +18,20 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
     private static int mCustomerTypeId;
     private static int mCustomerVolClassId;
     private int mTownId;
-    private static int RowId;    
+    private static int RowId;
     private static int OrderNo;
 
     #endregion
-   
+
     DataControl dc = new DataControl();
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
-        {                        
+        {
             int OrderNo = (int)Session["OrderNo"];
             txtprincipal.Text = Session["Route"].ToString();
-            txtDeliveryMan.Text = Session["SaleMan"].ToString();            
+            txtDeliveryMan.Text = Session["SaleMan"].ToString();
             if (OrderNo == -1)
             {
                 btnSaveOrder.Text = "Save Invoice";
@@ -44,8 +44,8 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
                 btnSaveOrder.Text = "Sale Return";
                 txtUnitRate.Enabled = true;
                 lblBillBook.Visible = false;
-                txtBillBookNo.Visible = false;                
-                
+                txtBillBookNo.Visible = false;
+
                 drpReturnType.Visible = true;
                 //txtFreeSku.Enabled = false;
             }
@@ -55,16 +55,16 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
             CreateTable();
             //LoadPromotion();
             //CreateFreeSKU();
-           // LoadFreeGrid();
+            // LoadFreeGrid();
             LoadPendingOrder();
             LoadSKULastPromotionDiscount();
             btnSave.Attributes.Add("onclick", "return ValidateForm();");
-            
+
             ddlSKuCde_SelectedIndexChanged(null, null);
             btnSaveOrder.Enabled = false;
             lblOrderDate.Text = Convert.ToDateTime(Session["OrderDate"]).ToString("dd-MMM-yyyy");
             rbExtraDiscountType_SelectedIndexChanged(null, null);
-            
+
             ScriptManager.GetCurrent(Page).SetFocus(drpCustomer);
         }
     }
@@ -87,7 +87,7 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
         PurchaseSKU.Columns.Add("STANDARD_DISCOUNT", typeof(decimal));
         PurchaseSKU.Columns.Add("STANDARD_DISCOUNT_PER", typeof(decimal));
         PurchaseSKU.Columns.Add("EXTRA_DISCOUNT", typeof(decimal));
-        PurchaseSKU.Columns.Add("EXTRA_DISCOUNT_PER", typeof(decimal));        
+        PurchaseSKU.Columns.Add("EXTRA_DISCOUNT_PER", typeof(decimal));
         PurchaseSKU.Columns.Add("RETAIL_AMOUNT", typeof(decimal));
         PurchaseSKU.Columns.Add("GST_RATE", typeof(decimal));
         PurchaseSKU.Columns.Add("GST_AMOUNT", typeof(decimal));
@@ -138,7 +138,7 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
         int OrderNo = (int)Session["OrderNo"];
         if (OrderNo == -2)
         {
-            DataTable dtOrder = or.SelectPendingOrder(int.Parse(Session["DistributorId"].ToString()), int.Parse(Session["AreaId"].ToString()), Constants.IntNullValue, int.Parse(Session["OrderBookerId"].ToString()), int.Parse(Session["DeliveryManId"].ToString()), Constants.Order_Pending_Id, Constants.IntNullValue, int.Parse(Session["UserId"].ToString()), Convert.ToDateTime(Session["OrderDate"]),2);
+            DataTable dtOrder = or.SelectPendingOrder(int.Parse(Session["DistributorId"].ToString()), int.Parse(Session["AreaId"].ToString()), Constants.IntNullValue, int.Parse(Session["OrderBookerId"].ToString()), int.Parse(Session["DeliveryManId"].ToString()), Constants.Order_Pending_Id, Constants.IntNullValue, int.Parse(Session["UserId"].ToString()), Convert.ToDateTime(Session["OrderDate"]), 2);
             drpDocumentNo.Items.Add(new clsListItems("New", Constants.LongNullValue.ToString()));
 
             clsWebFormUtil.FillDropDownList(drpDocumentNo, dtOrder, "SALE_INVOICE_ID", "SALE_INVOICE_ID2");
@@ -147,14 +147,14 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
         }
         else
         {
-            DataTable dtOrder = or.SelectPendingOrder(int.Parse(Session["DistributorId"].ToString()), int.Parse(Session["AreaId"].ToString()), Constants.IntNullValue, int.Parse(Session["OrderBookerId"].ToString()), int.Parse(Session["DeliveryManId"].ToString()), Constants.Order_Pending_Id, Constants.IntNullValue, int.Parse(Session["UserId"].ToString()), Convert.ToDateTime(Session["OrderDate"]),0);
+            DataTable dtOrder = or.SelectPendingOrder(int.Parse(Session["DistributorId"].ToString()), int.Parse(Session["AreaId"].ToString()), Constants.IntNullValue, int.Parse(Session["OrderBookerId"].ToString()), int.Parse(Session["DeliveryManId"].ToString()), Constants.Order_Pending_Id, Constants.IntNullValue, int.Parse(Session["UserId"].ToString()), Convert.ToDateTime(Session["OrderDate"]), 0);
             drpDocumentNo.Items.Add(new clsListItems("New", Constants.LongNullValue.ToString()));
 
             clsWebFormUtil.FillDropDownList(drpDocumentNo, dtOrder, "SALE_INVOICE_ID", "SALE_INVOICE_ID2");
-            
+
             Session.Add("dtOrder", dtOrder);
         }
-       
+
     }
     private void LoadCustomerData()
     {
@@ -163,12 +163,12 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
             drpCustomer.Items.Clear();
             CustomerDataController mController = new CustomerDataController();
             DataTable dtCustomer = mController.SelectPrincipalCustomer(int.Parse(Session["DistributorId"].ToString()), int.Parse(Session["AreaId"].ToString()), Constants.IntNullValue, Constants.IntNullValue);
-            clsWebFormUtil.FillDropDownList( drpCustomer, dtCustomer, "CUSTOMER_ID", "CUSTOMER_DETAIL2", true);
+            clsWebFormUtil.FillDropDownList(drpCustomer, dtCustomer, "CUSTOMER_ID", "CUSTOMER_DETAIL2", true);
             Session.Add("dtCustomer", dtCustomer);
         }
         else
         {
-            drpCustomer .Items.Clear();
+            drpCustomer.Items.Clear();
         }
     }
     private void LoadSKUDetail()
@@ -177,27 +177,27 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
 
         DataView dv = new DataView(Dtsku_Price);
         dv.RowFilter = "PRINCIPAL_ID = " + ddlPrincipal.SelectedValue;
-        clsWebFormUtil.FillDropDownList( ddlSKuCde , dv.ToTable(), "Sku_ID", "SkuPriceDetail2", true);
-        
+        clsWebFormUtil.FillDropDownList(ddlSKuCde, dv.ToTable(), "Sku_ID", "SkuPriceDetail2", true);
+
     }
     private void LoadPromotion()
     {
         SKUPriceDetailController PController = new SKUPriceDetailController();
         DataTable dt = PController.SelectDataPrice(Constants.IntNullValue, Constants.IntNullValue, Constants.IntNullValue, Constants.IntNullValue, Constants.IntNullValue, int.Parse(Session["UserId"].ToString()), Constants.IntNullValue, 0, DateTime.Parse(Session["OrderDate"].ToString()));
-       // if (bool.Parse(dt.Rows[0]["Is_ManualDiscount"].ToString()) == true)
-       // {
-            OrderEntryController orderController = new OrderEntryController();
+        // if (bool.Parse(dt.Rows[0]["Is_ManualDiscount"].ToString()) == true)
+        // {
+        OrderEntryController orderController = new OrderEntryController();
         //    PromotionCollections_Controller Arpc = orderController.LoadSchemes(int.Parse(Session["DistributorId"].ToString()), Constants.IntNullValue, Convert.ToDateTime(Session["OrderDate"]));
-            PromotionCollections_Controller Arpc = orderController.LoadSchemesOnlyScheme(int.Parse(Session["DistributorId"].ToString()), Constants.IntNullValue, Convert.ToDateTime(Session["OrderDate"]));
-           
-            Session.Add("Arpc", Arpc);
-            txtDiscountType.Text = "Auto Scheme";
-           
-            //
-            numTxtTotalStndrdDiscnt.ReadOnly = false;
-            //
-            numtxtUnClaimabledist.ReadOnly = true;
-            ChbDiscount.Checked = true;
+        PromotionCollections_Controller Arpc = orderController.LoadSchemesOnlyScheme(int.Parse(Session["DistributorId"].ToString()), Constants.IntNullValue, Convert.ToDateTime(Session["OrderDate"]));
+
+        Session.Add("Arpc", Arpc);
+        txtDiscountType.Text = "Auto Scheme";
+
+        //
+        numTxtTotalStndrdDiscnt.ReadOnly = false;
+        //
+        numtxtUnClaimabledist.ReadOnly = true;
+        ChbDiscount.Checked = true;
         //}
         //else
         //{
@@ -238,32 +238,32 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
         lblAmount.Text = "0.00";
         lblExtraDiscount.Text = "0.00";
         lblNetValue.Text = "0.00";
-        decimal ctn = 0,free_sku=0, unit = 0, amount = 0, extradiscount = 0, net = 0;
-       if(dt!=null)
+        decimal ctn = 0, free_sku = 0, unit = 0, amount = 0, extradiscount = 0, net = 0;
+        if (dt != null)
         {
-        foreach(DataRow dr in dt.Rows)
-        {
-            ctn += Convert.ToDecimal(dr["QUANTITY_CTN"]);
-            unit += Convert.ToDecimal(dr["QUANTITY_UNIT"]);
+            foreach (DataRow dr in dt.Rows)
+            {
+                ctn += Convert.ToDecimal(dr["QUANTITY_CTN"]);
+                unit += Convert.ToDecimal(dr["QUANTITY_UNIT"]);
                 free_sku += Convert.ToDecimal(dr["FREE_SKU"]);
 
 
                 amount += Convert.ToDecimal(dr["Amount"]);
-            extradiscount += Convert.ToDecimal(dr["EXTRA_DISCOUNT"]);
-            net += Convert.ToDecimal(dr["NET_AMOUNT"]);
-        }
+                extradiscount += Convert.ToDecimal(dr["EXTRA_DISCOUNT"]);
+                net += Convert.ToDecimal(dr["NET_AMOUNT"]);
+            }
         }
 
         lblCtn.Text = ctn.ToString();
         lblUnit.Text = unit.ToString();
         lblFreeUnit.Text = free_sku.ToString();
-        lblAmount.Text = String.Format("{0:0.00}",amount);
+        lblAmount.Text = String.Format("{0:0.00}", amount);
         lblExtraDiscount.Text = String.Format("{0:0.00}", extradiscount);
-        lblNetValue.Text = String.Format("{0:0.00}",net);        
+        lblNetValue.Text = String.Format("{0:0.00}", net);
     }
 
     #region Grid Operations
-    
+
     protected void GrdPurchase_RowEditing(object sender, GridViewEditEventArgs e)
     {
         try
@@ -310,12 +310,12 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
         PurchaseSKU = (DataTable)Session["PurchaseSKU"];
         PurchaseSKU.Rows.RemoveAt(e.RowIndex);
         Session.Add("PurchaseSKU", PurchaseSKU);
-        
-        LoadGird();        
+
+        LoadGird();
     }
-    
+
     #endregion
-        
+
     private bool CheckDublicateSKU()
     {
         PurchaseSKU = (DataTable)Session["PurchaseSKU"];
@@ -324,9 +324,9 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
         {
             return true;
         }
-       
-            return false;
-        
+
+        return false;
+
     }
 
     private int FreeSKUExist(DataTable dt, int Sku_id)
@@ -342,17 +342,17 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
         return -1;
     }
 
-    private void ExistenOrderDetail(long OrderId,int Type)
+    private void ExistenOrderDetail(long OrderId, int Type)
     {
         OrderEntryController ord = new OrderEntryController();
         PurchaseSKU = ord.SelectOrderDetail(int.Parse(Session["DistributorId"].ToString()), OrderId, Type);
-      //  dtFreeSKU = ord.SelectOrderPromotion(int.Parse(Session["DistributorId"].ToString()), OrderId, Type);
-        
+        //  dtFreeSKU = ord.SelectOrderPromotion(int.Parse(Session["DistributorId"].ToString()), OrderId, Type);
+
         Session.Add("PurchaseSKU", PurchaseSKU);
-      //  Session.Add("dtFreeSKU", dtFreeSKU);
-        
+        //  Session.Add("dtFreeSKU", dtFreeSKU);
+
         LoadGird();
-      //  LoadFreeGrid();
+        //  LoadFreeGrid();
     }
 
     private bool IsBillBookNoExist()
@@ -374,34 +374,34 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
         }
         return flag;
     }
-    
+
     private void EnableDisableController(bool CValue)
     {
-         
+
         if (CValue == true)
         {
             if (decimal.Parse(txtGrossAmount.Text) > 0)
-            {               
-                drpCustomer .Enabled = true;
-                                
+            {
+                drpCustomer.Enabled = true;
+
             }
         }
         else
         {
             drpCustomer.Enabled = false;
-                    
+
         }
     }
-    
+
     #region Click Operations
-    
+
     protected void btnSave_Click(object sender, EventArgs e)
-    {       
+    {
         btnCalculate.Enabled = true;
         DataControl dc = new DataControl();
         DataTable Dtsku_Price = (DataTable)Session["Dtsku_Price"];
         PurchaseSKU = (DataTable)Session["PurchaseSKU"];
-        DataRow[] foundRows = Dtsku_Price.Select("SKU_ID  = '" + ddlSKuCde .SelectedValue  + "'");
+        DataRow[] foundRows = Dtsku_Price.Select("SKU_ID  = '" + ddlSKuCde.SelectedValue + "'");
         string[] selectedTex = ddlSKuCde.SelectedItem.Text.Split(':');
         if (btnSave.Text == "Add")
         {
@@ -412,7 +412,7 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
                 dr["SKU_Code"] = selectedTex[1].ToString();
                 dr["SKU_Name"] = selectedTex[0].ToString();
                 dr["UNITS_IN_CASE"] = foundRows[0]["UNITS_IN_CASE"];
-                dr["QUANTITY_UNIT"] = int.Parse(dc.chkNull_0(txtQuantity.Text));          
+                dr["QUANTITY_UNIT"] = int.Parse(dc.chkNull_0(txtQuantity.Text));
                 dr["QUANTITY_UNIT2"] = 0;
                 dr["QUANTITY_CTN"] = int.Parse(dc.chkNull_0(txtCtn.Text));
                 dr["QUANTITY_CTN2"] = 0;
@@ -440,10 +440,10 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
                     dr["GST_RATE"] = 0;
                     dr["BATCH_NO"] = "E";
                 }
-                dr["STANDARD_DISCOUNT"] = 0;               
-                dr["GST_AMOUNT"] = 0;                
+                dr["STANDARD_DISCOUNT"] = 0;
+                dr["GST_AMOUNT"] = 0;
                 dr["Stock"] = txtStock.Text;
-                
+
                 if (int.Parse(rbExtraDiscountType.SelectedValue.ToString()) == 1)
                 {
                     dr["EXTRA_DISCOUNT_PER"] = decimal.Parse(dc.chkNull_0(txtExtDiscount.Text));
@@ -457,7 +457,7 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
                 dr["NET_AMOUNT"] = Convert.ToDecimal(dr["AMOUNT"]) - Convert.ToDecimal(dr["EXTRA_DISCOUNT"]);
                 dr["returnType"] = drpReturnType.SelectedValue;//for Sale Return
                 dr["PRINCIPAL_ID"] = ddlPrincipal.SelectedValue;
-                
+
                 if (btnSaveOrder.Text == "Save Invoice" || btnSaveOrder.Text == "Update Invoice")
                 {
                     int Stock = 0;
@@ -467,12 +467,12 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
                         Stock += Convert.ToInt32(strstock[0]) * Convert.ToInt32(dr["UNITS_IN_CASE"]);
                         Stock += Convert.ToInt32(strstock[1]);
                     }
-                    if ((int.Parse(dr["QUANTITY_CTN"].ToString()) * int.Parse(dr["UNITS_IN_CASE"].ToString())) + int.Parse(dr["QUANTITY_UNIT"].ToString())+ int.Parse(dr["FREE_SKU"].ToString()) > Stock)
+                    if ((int.Parse(dr["QUANTITY_CTN"].ToString()) * int.Parse(dr["UNITS_IN_CASE"].ToString())) + int.Parse(dr["QUANTITY_UNIT"].ToString()) + int.Parse(dr["FREE_SKU"].ToString()) > Stock)
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "msg", "alert('Available Stock is " + txtStock.Text + "')", true);
                         return;
                     }
-                }                
+                }
                 PurchaseSKU.Rows.Add(dr);
             }
             else
@@ -529,7 +529,7 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
             }
             dr["NET_AMOUNT"] = Convert.ToDecimal(dr["AMOUNT"]) - Convert.ToDecimal(dr["EXTRA_DISCOUNT"]);
             dr["STANDARD_DISCOUNT"] = 0;
-            dr["GST_AMOUNT"] = 0;            
+            dr["GST_AMOUNT"] = 0;
             dr["STANDARD_DISCOUNT_PER"] = 0;
             dr["returnType"] = drpReturnType.SelectedValue;//for Sale Return
             dr["PRINCIPAL_ID"] = ddlPrincipal.SelectedValue;
@@ -541,20 +541,20 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
                     string[] strstock = txtStock.Text.Split('-');
                     Stock += Convert.ToInt32(strstock[0]) * Convert.ToInt32(dr["UNITS_IN_CASE"]);
                     Stock += Convert.ToInt32(strstock[1]);
-                }                
+                }
                 if ((int.Parse(dr["QUANTITY_CTN"].ToString()) * int.Parse(dr["UNITS_IN_CASE"].ToString())) + int.Parse(dr["QUANTITY_UNIT"].ToString()) + int.Parse(dr["FREE_SKU"].ToString()) > Stock)
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "msg", "alert('Available Stock is " + txtStock.Text + "')", true);
                     return;
                 }
-            }            
+            }
         }
         Session.Add("PurchaseSKU", PurchaseSKU);
-        EnableDisableController(false);                
+        EnableDisableController(false);
         //btnCalculate_Click(null, null);
         ClearAll();
         LoadGird();
-        ScriptManager.GetCurrent(Page).SetFocus(ddlSKuCde);        
+        ScriptManager.GetCurrent(Page).SetFocus(ddlSKuCde);
     }
     protected void btnCalculate_Click(object sender, EventArgs e)
     {
@@ -569,7 +569,7 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
             decimal ObjFreeGSTAmount = 0;
             decimal ObjFreeGrossAmt = 0;
             decimal ObjFreeTST = 0;
-           // decimal ProductExtDist = 0;
+            // decimal ProductExtDist = 0;
             decimal ProductStdDist = 0;
 
             OrderEntryController or = new OrderEntryController();
@@ -1319,6 +1319,7 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
                 }
             }
             btnSaveOrder.Enabled = true;
+            btnSaveInvoice.Enabled = true;
         }
     }
     protected void btnSaveOrder_Click(object sender, EventArgs e)
@@ -1648,22 +1649,18 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
                 drpCustomer.SelectedValue = foundRows[0]["CUSTOMER_ID"].ToString();
                 numtxtUnClaimabledist.Text = String.Format("{0:0.00}", foundRows[0]["SED_AMOUNT"]);
                 txtRemarks.Text = foundRows[0]["REMARKS"].ToString();
-               
+
                 if (OrderNo == -2)
                 {
-                    ExistenOrderDetail(long.Parse(drpDocumentNo.SelectedValue.ToString()),2);
-                    btnSaveOrder.Text = "Update Return";                  
+                    ExistenOrderDetail(long.Parse(drpDocumentNo.SelectedValue.ToString()), 2);
+                    btnSaveOrder.Text = "Update Return";
                 }
                 else
                 {
-                    // EnableDisableController(false);
-                    // btnSaveOrder.Text = "Save Invoice";
-                    ExistenOrderDetail(long.Parse(drpDocumentNo.SelectedValue.ToString()),0);
+                    ExistenOrderDetail(long.Parse(drpDocumentNo.SelectedValue.ToString()), 0);
                     btnSaveOrder.Text = "Update Order";
-                   
-
                     RblPayMode.SelectedValue = foundRows[0]["ORDER_TYPE_ID"].ToString();
-                   
+                    tdInvButton.Visible = true;
                 }
                 ClearAll();
                 ScriptManager.GetCurrent(Page).SetFocus(ddlSKuCde);
@@ -1697,7 +1694,7 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
             txtStock.Text = "0-0";
 
             DataTable dtskuPrice = (DataTable)Session["Dtsku_Price"];
-           
+
             DataRow[] foundRows = dtskuPrice.Select("SKU_ID  = '" + ddlSKuCde.SelectedValue + "'");
             txtStock.Text = (foundRows[0]["Stock"].ToString());
             txtUnitRate.Text = (foundRows[0]["TRADE_PRICE"].ToString());
@@ -1706,7 +1703,7 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
             {
                 txtStock.Text = "0-0";
             }
-           
+
 
         }
         catch
@@ -1715,25 +1712,25 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
 
             txtUnitRate.Text = "";
         }
-        
+
     }
-    
+
     protected void rbExtraDiscountType_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (int.Parse(rbExtraDiscountType.SelectedValue.ToString()) == 1)
         {
-            txtExtDiscount.Enabled = true ;
+            txtExtDiscount.Enabled = true;
             txtExtDiscountValue.Enabled = false;
             txtExtDiscount.Text = "";
             txtExtDiscountValue.Text = "";
         }
         else if (int.Parse(rbExtraDiscountType.SelectedValue.ToString()) == 2)
         {
-            txtExtDiscount.Enabled = false ;
-            txtExtDiscountValue.Enabled = true ;
-            txtExtDiscount.Text  = "";
-            txtExtDiscountValue.Text  = "";
-        }        
+            txtExtDiscount.Enabled = false;
+            txtExtDiscountValue.Enabled = true;
+            txtExtDiscount.Text = "";
+            txtExtDiscountValue.Text = "";
+        }
     }
 
     protected void ddlPrincipal_SelectedIndexChanged(object sender, EventArgs e)
@@ -1802,7 +1799,9 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
         drpDocumentNo.SelectedIndex = 0;
         txtCashReceived.Text = "";
         txtBillBookNo.Text = string.Empty;
-       
+        btnSaveInvoice.Enabled = false;
+        tdInvButton.Visible = false;
+
     }
 
     private bool IsDayClosed()
@@ -1858,7 +1857,7 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
                     lblinvoice.Text = "";
                     lblInvoiceDate.Text = "";
 
-                    lblDiscountValue.Text =Math.Round(decimal.Parse(dc.chkNull_0(Last_Promotion.Rows[0]["DISCOUNT"].ToString())),2).ToString();
+                    lblDiscountValue.Text = Math.Round(decimal.Parse(dc.chkNull_0(Last_Promotion.Rows[0]["DISCOUNT"].ToString())), 2).ToString();
                     lblfreeskuValue.Text = Math.Round(decimal.Parse(dc.chkNull_0(Last_Promotion.Rows[0]["FREE_SKU"].ToString())), 0).ToString();
                     lblQty.Text = Math.Round(decimal.Parse(dc.chkNull_0(Last_Promotion.Rows[0]["QUANTITY"].ToString())), 0).ToString();
                     lblinvoice.Text = Last_Promotion.Rows[0]["SALE_INVOICE_ID"].ToString();
@@ -1889,7 +1888,7 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
         {
             ExceptionPublisher.PublishException(ex);
         }
-        
+
     }
 
     protected void drpCustomer_SelectedIndexChanged(object sender, EventArgs e)
@@ -1904,5 +1903,73 @@ public partial class Forms_frmOrderEntry : System.Web.UI.Page
         ScriptManager.GetCurrent(Page).SetFocus(ddlSKuCde);
     }
 
-    
+    protected void btnSaveInvoice_Click(object sender, EventArgs e)
+    {
+        if (FindCustomer())
+        {
+            if (IsDayClosed())
+            {
+                UserController UserCtl = new UserController();
+
+                UserCtl.InsertUserLogoutTime(Convert.ToInt32(Session["User_Log_ID"]), Convert.ToInt32(Session["UserID"]));
+                Session.Clear();
+                System.Web.Security.FormsAuthentication.SignOut();
+                Response.Redirect("../Login.aspx");
+            }
+            else
+            {
+                string ManualID = null;
+                if (txtBillBookNo.Text.Trim().Length > 0)
+                {
+                    ManualID = txtBillBookNo.Text.ToUpper();
+                }
+                DataControl DC = new DataControl();
+                PurchaseSKU = (DataTable)Session["PurchaseSKU"];
+                dtFreeSKU = (DataTable)Session["dtFreeSKU"];
+
+                OrderEntryController mOrderController = new OrderEntryController();
+                #region Check Stock Limit
+                foreach (DataRow dr in PurchaseSKU.Rows)
+                {
+                    PhaysicalStockController mController = new PhaysicalStockController();
+                    DataTable dtstock = mController.SelectSKUClosingStock(int.Parse(Session["DistributorId"].ToString()), int.Parse(dr["SKU_ID"].ToString()), "", DateTime.Parse(Session["OrderDate"].ToString()));
+                    if (dtstock.Rows.Count > 0)
+                    {
+                        int Total_Units = (int.Parse(dr["UNITS_IN_CASE"].ToString()) * int.Parse(dr["QUANTITY_CTN"].ToString())) + int.Parse(dr["QUANTITY_UNIT"].ToString()) + int.Parse(dr["FREE_SKU"].ToString());
+
+                        if (int.Parse(dtstock.Rows[0][0].ToString()) < Total_Units)
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "msg", "alert('" + dr["SKU_Code"].ToString() + " Current Stock is " + dtstock.Rows[0][0].ToString() + "');", true);
+                            return;
+                        }
+                        else if (Convert.ToDecimal(dtstock.Rows[0][1]) != Convert.ToDecimal(dr["UNIT_PRICE"]))
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "msg", "alert('" + dr["SKU_Code"].ToString() + " Order Rate is " + dr["UNIT_PRICE"].ToString() + " and Current Rate is " + dtstock.Rows[0][1].ToString() + "');", true);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "msg", "alert(' + " + dr["SKU_Code"].ToString() + "No Stock Found');", true);
+                        return;
+                    }
+                }
+                #endregion
+
+                bool IsValidInsert = mOrderController.Add_Invoice(int.Parse(Session["DistributorId"].ToString()), ManualID, mTownId, long.Parse(Session["AreaId"].ToString()), 0, long.Parse(Session["CUSTOMER_ID"].ToString()), long.Parse(Session["CUSTOMER_ID"].ToString()), int.Parse(Session["OrderBookerId"].ToString()), int.Parse(Session["DeliveryManId"].ToString()), long.Parse(drpDocumentNo.SelectedValue.ToString()),
+                decimal.Parse(DC.chkNull_0(txtGrossAmount.Text)), decimal.Parse(DC.chkNull_0(numTxtTotalStndrdDiscnt.Text)), decimal.Parse(DC.chkNull_0(numtxtTotalExtraDiscnt.Text)), decimal.Parse(DC.chkNull_0(numTxtTotalGST.Text)), decimal.Parse(DC.chkNull_0(numTxtTotlAmnt.Text)), 0, int.Parse(RblPayMode.SelectedValue.ToString()),
+                PurchaseSKU, dtFreeSKU, int.Parse(Session["UserId"].ToString()), decimal.Parse(DC.chkNull_0(txtCashReceived.Text)), DateTime.Parse(Session["OrderDate"].ToString()), decimal.Parse(DC.chkNull_0(numTxtTotalTST.Text)), decimal.Parse(DC.chkNull_0(numtxtUnClaimabledist.Text)), txtRemarks.Text);
+                if (IsValidInsert)
+                {
+                    LoadCustomerData();
+                    LoadPendingOrder();
+                    ClearMasterALL();
+                    Session.Remove("hfBillBookNo");
+                    LoadSKUDetail();
+                    drpDocumentNo_SelectedIndexChanged(null, null);
+                    ScriptManager.GetCurrent(Page).SetFocus(drpCustomer);
+                }
+            }
+        }
+    }
 }

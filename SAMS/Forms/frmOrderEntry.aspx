@@ -606,6 +606,10 @@
                                                                 <asp:Button AccessKey="C" ID="btnCalculate" OnClick="btnCalculate_Click" runat="server"
                                                                     Width="100px" Font-Size="8pt" Text="Calculate" Enabled="False" CssClass="Button" />
                                                             </td>
+                                                            <td style="width: 100px"  runat="server" id="tdInvButton" visible="false">
+                                                                <asp:Button AccessKey="I" ID="btnSaveInvoice" OnClick="btnSaveInvoice_Click" runat="server"
+                                                                    Width="100px" Font-Size="8pt" Text="Save Invocie" Enabled="False" CssClass="Button" />
+                                                            </td>
                                                             <td style="width: 100px">
                                                                 <asp:Button AccessKey="S" ID="btnSaveOrder" OnClick="btnSaveOrder_Click" runat="server"
                                                                     Width="110px" Font-Size="8pt" Text="Save Order" CssClass="Button" />
