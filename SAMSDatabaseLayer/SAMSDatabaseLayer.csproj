@@ -84,6 +84,14 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="SAMSCommon, Version=1.0.9790.20189, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SAMSCommon\bin\Debug\SAMSCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="SAMSDataAccessLayer, Version=1.0.9790.20190, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SAMSDataAccessLayer\bin\Debug\SAMSDataAccessLayer.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -1112,16 +1120,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="OutPutsClasses\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SAMSCommon\SAMSCommon.csproj">
-      <Project>{848C4FC7-6E77-4041-925B-4B874B9E7C4E}</Project>
-      <Name>SAMSCommon</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SAMSDataAccessLayer\SAMSDataAccessLayer.csproj">
-      <Project>{26D8191C-6D6A-4457-BD84-41F5DFAAF9C2}</Project>
-      <Name>SAMSDataAccessLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

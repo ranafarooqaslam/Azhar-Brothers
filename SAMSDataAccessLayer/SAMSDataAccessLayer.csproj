@@ -99,12 +99,6 @@
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SAMSCommon\SAMSCommon.csproj">
-      <Project>{848C4FC7-6E77-4041-925B-4B874B9E7C4E}</Project>
-      <Name>SAMSCommon</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
