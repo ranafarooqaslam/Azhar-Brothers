@@ -48,14 +48,6 @@ Copyright (C) Microsoft Corporation. All rights reserved.
       <Project>{4CC9CBCE-9BBF-440E-850A-7B51F914792E}</Project>
       <Name>SAMSBusinessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SAMSCommon\SAMSCommon.csproj">
-      <Project>{848C4FC7-6E77-4041-925B-4B874B9E7C4E}</Project>
-      <Name>SAMSCommon</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SAMSDataAccessLayer\SAMSDataAccessLayer.csproj">
-      <Project>{26D8191C-6D6A-4457-BD84-41F5DFAAF9C2}</Project>
-      <Name>SAMSDataAccessLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SAMSDatabaseLayer\SAMSDatabaseLayer.csproj">
       <Project>{DF27A1C1-7BFD-44DF-98FD-D3598947F58E}</Project>
       <Name>SAMSDatabaseLayer</Name>

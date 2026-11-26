@@ -4,11 +4,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SAMSBusinessLayer.Classes;
 using SAMSCommon.Classes;
-using SAMSBusinessLayer.Reports;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System.Web;
-using System.Linq;
 using System.Drawing;
 
 /// <summary>
